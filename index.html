@@ -45,6 +45,7 @@
   .site-header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: #0f0e0b;
+    pointer-events: auto;
   }
   .header-brand {
     display: flex; justify-content: space-between; align-items: center;
@@ -88,6 +89,8 @@
     transition: all 0.15s;
     display: flex; align-items: center; gap: 7px;
     white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(184,154,90,0.2);
   }
   .folder-tab:hover:not(.active) {
     background: #222018; color: rgba(245,240,232,0.6);
@@ -229,6 +232,9 @@
     margin-bottom: 10px;
     overflow: hidden;
     transition: border-color 0.2s;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(184,154,90,0.15);
+    touch-action: manipulation;
   }
   .exp-entry:last-child { margin-bottom: 0; }
   .exp-entry.open { border-color: rgba(184,154,90,0.25); }
@@ -544,6 +550,12 @@
   }
 
   /* Gutter shadow on pages — removed for flat PDF view */
+
+  /* Hug the gutter so there's no empty space between the two PDF pages */
+  .page-left .pdf-page-slot { justify-content: flex-end; }
+  .page-right .pdf-page-slot { justify-content: flex-start; }
+  .page-left { padding-right: 0; }
+  .page-right { padding-left: 0; }
 
   /* Book nav */
   .book-nav {
@@ -910,21 +922,32 @@
   }
 
   /* ═══════════════════════════════════════
-     MOBILE RESPONSIVE — max-width: 680px
+     MOBILE RESPONSIVE — max-width: 900px
+     (catches phones + tablets in portrait)
   ═══════════════════════════════════════ */
-  @media (max-width: 680px) {
+  @media (max-width: 900px) {
 
     /* ── Header & tabs ── */
+    .site-header { pointer-events: auto; }
     .header-brand { padding: 0.6rem 1rem 0; }
     .nav-brand { font-size: 10px; letter-spacing: 0.08em; }
     .nav-code { display: none; }
 
-    .folder-tabs { padding: 0 0.75rem; gap: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
+    .folder-tabs {
+      padding: 0 0.75rem; gap: 2px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+      position: relative; z-index: 101;
+    }
     .folder-tabs::-webkit-scrollbar { display: none; }
-    .folder-tab { font-size: 9px; padding: 6px 10px 7px; gap: 4px; }
+    .folder-tab {
+      font-size: 9px; padding: 8px 12px 9px; gap: 4px;
+      /* Widen the tap target a bit for fingers */
+      min-height: 36px;
+    }
     .folder-tab .tab-index { display: none; }
 
-    .view { padding-top: 72px; }
+    .view { padding-top: 76px; }
 
     /* ── Resume ── */
     .resume-wrap { padding: 2rem 1.25rem 4rem; }
@@ -957,19 +980,45 @@
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .skill-group[style*="span 2"] { grid-column: span 2; }
 
-    /* ── Book viewer ── */
-    .book-scene { padding: 2rem 1rem; justify-content: flex-start; padding-top: 2rem; }
-    .book { width: 100%; height: auto; min-height: 360px; }
-    .book-cover-wrap { position: relative; width: 100%; }
-    .book-cover { min-height: 360px; border-radius: 4px 8px 8px 4px; }
+    /* ── Book viewer (simplified mobile layout) ── */
+    .book-scene {
+      padding: 1.5rem 0.75rem; padding-top: 1.5rem;
+      justify-content: flex-start;
+      min-height: 0;
+    }
+    .book-container { perspective: none; width: 100%; }
+    .book {
+      width: 100%; height: auto;
+      aspect-ratio: 3 / 4;
+      max-height: calc(100vh - 200px);
+    }
+    .book-cover-wrap,
+    .book-cover,
+    .book-cover-back,
+    .book-pages {
+      position: absolute; inset: 0;
+    }
+    .book-cover-wrap.opened { transform: rotateY(-180deg); }
+    .book-cover { border-radius: 4px; }
+    /* Single-page mobile view: only the left page renders, right is hidden.
+       Swipe (or tap the prev/next buttons) to navigate one page at a time. */
+    .book-pages { flex-direction: row; touch-action: pan-y; }
+    .book-pages.visible { display: flex; }
+    .page { padding: 0.25rem; }
+    .page-right { display: none; }
+    .page-left {
+      flex: 1 1 100%; width: 100%;
+      border-right: none;
+      padding: 0.25rem;
+      cursor: default;
+    }
+    .page-left .pdf-page-slot { justify-content: center; align-items: center; }
     .cover-title { font-size: 28px; }
-    .page { padding: 1.5rem; }
-    .page-left { border-right: none; border-bottom: 0.5px solid rgba(0,0,0,0.1); }
     .page-title { font-size: 18px; }
     .book-nav { gap: 0.75rem; }
-    .book-nav-btn { padding: 7px 14px; font-size: 9px; }
+    .book-nav-btn { padding: 8px 16px; font-size: 9px; min-height: 36px; }
 
-    /* ── Notebook ── */
+    /* ── Notebook (kept for legacy; grad school now uses the book viewer) ── */
     .notebook-scene { padding: 1.5rem 1rem; }
     .notebook-wrap { width: 100%; }
     .spiral-col { width: 28px; }
@@ -1401,7 +1450,7 @@
       <div class="book">
         <!-- Pages behind cover -->
         <div class="book-pages" id="bookPages">
-          <div class="page page-left" id="pageLeft" onclick="turnPage(-1)" title="Previous spread">
+          <div class="page page-left" id="pageLeft" onclick="onPageZoneClick(-1)" title="Previous spread">
             <div class="page-content">
               <div class="pdf-page-slot">
                 <canvas id="leftCanvas" class="pdf-canvas"></canvas>
@@ -1413,7 +1462,7 @@
               <div class="page-num" id="leftPageNum" style="margin-top:8px;align-self:center;">p. 01</div>
             </div>
           </div>
-          <div class="page page-right" id="pageRight" onclick="turnPage(1)" title="Next spread">
+          <div class="page page-right" id="pageRight" onclick="onPageZoneClick(1)" title="Next spread">
             <div class="page-content">
               <div class="pdf-page-slot">
                 <canvas id="rightCanvas" class="pdf-canvas"></canvas>
@@ -1464,7 +1513,7 @@
       <div class="book">
         <!-- Pages behind cover -->
         <div class="book-pages" id="gradBookPages">
-          <div class="page page-left" id="gradPageLeft" onclick="turnGradPage(-1)" title="Previous spread">
+          <div class="page page-left" id="gradPageLeft" onclick="onGradPageZoneClick(-1)" title="Previous spread">
             <div class="page-content">
               <div class="pdf-page-slot">
                 <canvas id="gradLeftCanvas" class="pdf-canvas"></canvas>
@@ -1476,7 +1525,7 @@
               <div class="page-num" id="gradLeftPageNum" style="margin-top:8px;align-self:center;">p. 01</div>
             </div>
           </div>
-          <div class="page page-right" id="gradPageRight" onclick="turnGradPage(1)" title="Next spread">
+          <div class="page page-right" id="gradPageRight" onclick="onGradPageZoneClick(1)" title="Next spread">
             <div class="page-content">
               <div class="pdf-page-slot">
                 <canvas id="gradRightCanvas" class="pdf-canvas"></canvas>
@@ -1694,16 +1743,25 @@
     document.body.style.background = viewBg[id];
     document.querySelector('.folder-tabs').style.setProperty('--tab-line', viewLine[id]);
 
-    // Render PDF-backed surfaces now that their view is laid out.
+    // Render PDF-backed surfaces now that their view is laid out, and start
+    // warming the cache for the first spread so it's ready when the cover opens.
     if (id === 'portfolio') {
-      requestAnimationFrame(() => {
-        if (!coverRendered) renderCover();
+      requestAnimationFrame(async () => {
+        if (!coverRendered) await renderCover();
         if (bookOpen) updateSpread();
+        if (portfolioPdf) {
+          const slotEl = document.getElementById('leftCanvas').parentElement;
+          prefetchPages(portfolioPdf, [2, 3, 4, 5], slotEl);
+        }
       });
     } else if (id === 'gradschool') {
-      requestAnimationFrame(() => {
-        if (!gradCoverRendered) renderGradCover();
+      requestAnimationFrame(async () => {
+        if (!gradCoverRendered) await renderGradCover();
         if (gradBookOpen) updateGradSpread();
+        if (gradPdf) {
+          const slotEl = document.getElementById('gradLeftCanvas').parentElement;
+          prefetchPages(gradPdf, [2, 3, 4, 5], slotEl);
+        }
       });
     }
   }
@@ -1718,29 +1776,110 @@
   let portfolioTotalPages = 0;
   let portfolioTotalSpreads = 0;
 
+  // Mobile single-page mode: currentSpread / gradCurrentSpread are
+  // re-interpreted as a 1-based page index (0 = first interior page, PDF page 2).
+  function isMobileView() {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+  function portfolioMaxIndex() {
+    return isMobileView()
+      ? Math.max(0, portfolioTotalPages - 2) // mobile: pages 2..N → index 0..N-2
+      : Math.max(0, portfolioTotalSpreads - 1);
+  }
+  function gradMaxIndex() {
+    return isMobileView()
+      ? Math.max(0, gradTotalPages - 2)
+      : Math.max(0, gradTotalSpreads - 1);
+  }
+
+  // ── PDF render cache ──
+  // Rasterized pages are cached as offscreen canvases keyed by (pdf, pageNum, bucketed size).
+  // Rendering a cached page is an instant drawImage blit; neighboring spreads are prefetched
+  // in the background so clicking Next rarely waits for the PDF worker.
+  const pdfBitmapCache = new Map(); // insertion-ordered → LRU
+  const MAX_CACHE = 16;
+  let _pdfIdCounter = 0;
+  function pdfIdOf(pdf) { return pdf._rgId || (pdf._rgId = 'p' + (++_pdfIdCounter)); }
+  function cacheKey(pdf, pageNum, slotW, slotH) {
+    // Bucket dimensions so sub-pixel layout changes don't thrash the cache.
+    const bw = Math.round(slotW / 20) * 20;
+    const bh = Math.round(slotH / 20) * 20;
+    return pdfIdOf(pdf) + '|' + pageNum + '|' + bw + 'x' + bh;
+  }
+  function cacheEvict() {
+    while (pdfBitmapCache.size > MAX_CACHE) {
+      pdfBitmapCache.delete(pdfBitmapCache.keys().next().value);
+    }
+  }
+
+  async function rasterizePage(pdf, pageNum, slotW, slotH) {
+    if (!slotW || !slotH) return null;
+    const key = cacheKey(pdf, pageNum, slotW, slotH);
+    const hit = pdfBitmapCache.get(key);
+    if (hit) {
+      // LRU touch: move to end of insertion order
+      pdfBitmapCache.delete(key);
+      pdfBitmapCache.set(key, hit);
+      return hit;
+    }
+    const page = await pdf.getPage(pageNum);
+    const baseViewport = page.getViewport({ scale: 1 });
+    const fitScale = Math.min(slotW / baseViewport.width, slotH / baseViewport.height);
+    const dpr = window.devicePixelRatio || 1;
+    const supersample = Math.max(dpr, 2);
+    const viewport = page.getViewport({ scale: fitScale * supersample });
+    const off = document.createElement('canvas');
+    off.width = Math.floor(viewport.width);
+    off.height = Math.floor(viewport.height);
+    off._cssW = baseViewport.width * fitScale;
+    off._cssH = baseViewport.height * fitScale;
+    const ctx = off.getContext('2d', { alpha: false });
+    ctx.imageSmoothingEnabled = true;
+    if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'high';
+    try {
+      await page.render({ canvasContext: ctx, viewport }).promise;
+    } catch (e) {
+      if (e && e.name === 'RenderingCancelledException') return null;
+      throw e;
+    }
+    pdfBitmapCache.set(key, off);
+    cacheEvict();
+    return off;
+  }
+
+  // Per-canvas token: if a newer render is issued while we're awaiting, the older
+  // result gets discarded so it can't clobber the visible canvas.
+  const canvasTokens = new WeakMap();
+
   async function renderPdfPageToCanvas(pdf, pageNum, canvas) {
     const slot = canvas.parentElement;
     const slotW = slot.clientWidth;
     const slotH = slot.clientHeight;
-    // Parent isn't laid out yet (hidden view) — bail; caller will retry when visible.
     if (!slotW || !slotH) return false;
-    const page = await pdf.getPage(pageNum);
-    const baseViewport = page.getViewport({ scale: 1 });
-    const fitScale = Math.min(slotW / baseViewport.width, slotH / baseViewport.height);
-    // Supersample: render well above display density so browser always downsamples (crisp text).
-    const dpr = window.devicePixelRatio || 1;
-    const supersample = Math.max(dpr, 2);
-    const renderScale = fitScale * supersample;
-    const viewport = page.getViewport({ scale: renderScale });
-    canvas.width = Math.floor(viewport.width);
-    canvas.height = Math.floor(viewport.height);
-    canvas.style.width = (baseViewport.width * fitScale) + 'px';
-    canvas.style.height = (baseViewport.height * fitScale) + 'px';
+    const token = (canvasTokens.get(canvas) || 0) + 1;
+    canvasTokens.set(canvas, token);
+    const off = await rasterizePage(pdf, pageNum, slotW, slotH);
+    if (canvasTokens.get(canvas) !== token) return false;
+    if (!off) return false;
+    canvas.width = off.width;
+    canvas.height = off.height;
+    canvas.style.width = off._cssW + 'px';
+    canvas.style.height = off._cssH + 'px';
     const ctx = canvas.getContext('2d', { alpha: false });
-    ctx.imageSmoothingEnabled = true;
-    if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'high';
-    await page.render({ canvasContext: ctx, viewport }).promise;
+    ctx.drawImage(off, 0, 0);
     return true;
+  }
+
+  // Fire-and-forget cache warmers.
+  function prefetchPages(pdf, pageNums, refSlotEl) {
+    if (!pdf || !refSlotEl) return;
+    const slotW = refSlotEl.clientWidth, slotH = refSlotEl.clientHeight;
+    if (!slotW || !slotH) return;
+    for (const n of pageNums) {
+      if (n >= 1 && n <= pdf.numPages) {
+        rasterizePage(pdf, n, slotW, slotH).catch(() => {});
+      }
+    }
   }
 
   let coverRendered = false;
@@ -1792,33 +1931,43 @@
       document.getElementById('leftFallback').classList.add('active');
       return;
     }
-    // Interior spreads start at PDF page 2 (page 1 is used as the cover).
-    const leftPage = currentSpread * 2 + 2;
-    const rightPage = currentSpread * 2 + 3;
     const leftCanvas = document.getElementById('leftCanvas');
     const rightCanvas = document.getElementById('rightCanvas');
     const leftFb = document.getElementById('leftFallback');
     const rightFb = document.getElementById('rightFallback');
 
-    if (leftPage <= portfolioTotalPages) {
+    // Clamp into the valid range for the current mode in case the viewport changed.
+    currentSpread = Math.max(0, Math.min(portfolioMaxIndex(), currentSpread));
+
+    if (isMobileView()) {
+      // ── Mobile: one page at a time ──
+      const totalMobilePages = Math.max(1, portfolioTotalPages - 1); // interior pages only
+      const pageNum = currentSpread + 2; // skip the cover
+      const atStart = currentSpread === 0;
+      const atEnd = currentSpread >= totalMobilePages - 1;
+
+      document.getElementById('bookCounter').textContent = 'Page ' + (currentSpread + 1) + ' of ' + totalMobilePages;
+      document.getElementById('bookPrev').disabled = atStart;
+      document.getElementById('bookNext').disabled = atEnd;
+      document.getElementById('pageLeft').classList.toggle('at-bound', atStart);
+      document.getElementById('pageRight').classList.toggle('at-bound', atEnd);
+
       leftCanvas.style.display = 'block';
       leftFb.classList.remove('active');
-      try { await renderPdfPageToCanvas(portfolioPdf, leftPage, leftCanvas); } catch (e) { console.error(e); }
-      document.getElementById('leftPageNum').textContent = 'p. ' + String(leftPage).padStart(2,'0');
-    } else {
-      leftCanvas.style.display = 'none';
-      document.getElementById('leftPageNum').textContent = '';
+      document.getElementById('leftPageNum').textContent = 'p. ' + String(pageNum).padStart(2,'0');
+      // right is hidden by CSS, but clear its fallback / number anyway
+      rightFb.classList.remove('active');
+      document.getElementById('rightPageNum').textContent = '';
+
+      await renderPdfPageToCanvas(portfolioPdf, pageNum, leftCanvas).catch(e => console.error(e));
+      prefetchPages(portfolioPdf, [pageNum + 1, pageNum - 1, pageNum + 2], leftCanvas.parentElement);
+      return;
     }
 
-    if (rightPage <= portfolioTotalPages) {
-      rightCanvas.style.display = 'block';
-      rightFb.classList.remove('active');
-      try { await renderPdfPageToCanvas(portfolioPdf, rightPage, rightCanvas); } catch (e) { console.error(e); }
-      document.getElementById('rightPageNum').textContent = 'p. ' + String(rightPage).padStart(2,'0');
-    } else {
-      rightCanvas.style.display = 'none';
-      document.getElementById('rightPageNum').textContent = '';
-    }
+    // ── Desktop: two-page spread (original behavior) ──
+    // Interior spreads start at PDF page 2 (page 1 is used as the cover).
+    const leftPage = currentSpread * 2 + 2;
+    const rightPage = currentSpread * 2 + 3;
 
     document.getElementById('bookCounter').textContent = 'Spread ' + (currentSpread + 1) + ' of ' + portfolioTotalSpreads;
     const atStart = currentSpread === 0;
@@ -1827,157 +1976,6 @@
     document.getElementById('bookNext').disabled = atEnd;
     document.getElementById('pageLeft').classList.toggle('at-bound', atStart);
     document.getElementById('pageRight').classList.toggle('at-bound', atEnd);
-  }
 
-  function turnPage(dir) {
-    if (!portfolioPdf) return;
-    currentSpread = Math.max(0, Math.min(portfolioTotalSpreads - 1, currentSpread + dir));
-    updateSpread();
-  }
-
-  // ── PDF-backed book viewer (Grad School) ──
-  let gradBookOpen = false;
-  let gradCurrentSpread = 0;
-  let gradPdf = null;
-  let gradTotalPages = 0;
-  let gradTotalSpreads = 0;
-
-  let gradCoverRendered = false;
-  async function renderGradCover() {
-    if (!gradPdf) return;
-    const canvas = document.getElementById('gradCoverCanvas');
-    const cover = canvas.closest('.book-cover');
-    try {
-      const ok = await renderPdfPageToCanvas(gradPdf, 1, canvas);
-      if (ok) {
-        canvas.classList.add('active');
-        if (cover) cover.classList.add('pdf-loaded');
-        gradCoverRendered = true;
-      }
-    } catch (e) {
-      console.error('Grad Cover render failed:', e);
-    }
-  }
-
-  async function loadGradPdf() {
-    if (!window.pdfjsLib) return;
-    try {
-      gradPdf = await pdfjsLib.getDocument(GRADSCHOOL_PDF).promise;
-      gradTotalPages = gradPdf.numPages;
-      gradTotalSpreads = Math.max(1, Math.ceil((gradTotalPages - 1) / 2));
-      await renderGradCover();
-      if (gradBookOpen) updateGradSpread();
-    } catch (e) {
-      console.error('Grad school PDF load failed:', e);
-      document.getElementById('gradLeftFallback').classList.add('active');
-      const nav = document.getElementById('gradBookNav');
-      if(nav) nav.style.display = 'none';
-    }
-  }
-
-  function openGradBook() {
-    if (gradBookOpen) return;
-    gradBookOpen = true;
-    document.getElementById('gradBookCoverWrap').classList.add('opened');
-    setTimeout(() => {
-      document.getElementById('gradBookPages').classList.add('visible');
-      document.getElementById('gradBookNav').style.display = 'flex';
-      updateGradSpread();
-    }, 500);
-  }
-
-  async function updateGradSpread() {
-    if (!gradPdf) {
-      document.getElementById('gradLeftFallback').classList.add('active');
-      return;
-    }
-    const leftPage = gradCurrentSpread * 2 + 2;
-    const rightPage = gradCurrentSpread * 2 + 3;
-    const leftCanvas = document.getElementById('gradLeftCanvas');
-    const rightCanvas = document.getElementById('gradRightCanvas');
-    const leftFb = document.getElementById('gradLeftFallback');
-    const rightFb = document.getElementById('gradRightFallback');
-
-    if (leftPage <= gradTotalPages) {
-      leftCanvas.style.display = 'block';
-      leftFb.classList.remove('active');
-      try { await renderPdfPageToCanvas(gradPdf, leftPage, leftCanvas); } catch (e) { console.error(e); }
-      document.getElementById('gradLeftPageNum').textContent = 'p. ' + String(leftPage).padStart(2,'0');
-    } else {
-      leftCanvas.style.display = 'none';
-      document.getElementById('gradLeftPageNum').textContent = '';
-    }
-
-    if (rightPage <= gradTotalPages) {
-      rightCanvas.style.display = 'block';
-      rightFb.classList.remove('active');
-      try { await renderPdfPageToCanvas(gradPdf, rightPage, rightCanvas); } catch (e) { console.error(e); }
-      document.getElementById('gradRightPageNum').textContent = 'p. ' + String(rightPage).padStart(2,'0');
-    } else {
-      rightCanvas.style.display = 'none';
-      document.getElementById('gradRightPageNum').textContent = '';
-    }
-
-    document.getElementById('gradBookCounter').textContent = 'Spread ' + (gradCurrentSpread + 1) + ' of ' + gradTotalSpreads;
-    const atStart = gradCurrentSpread === 0;
-    const atEnd = gradCurrentSpread >= gradTotalSpreads - 1;
-    document.getElementById('gradBookPrev').disabled = atStart;
-    document.getElementById('gradBookNext').disabled = atEnd;
-    document.getElementById('gradPageLeft').classList.toggle('at-bound', atStart);
-    document.getElementById('gradPageRight').classList.toggle('at-bound', atEnd);
-  }
-
-  function turnGradPage(dir) {
-    if (!gradPdf) return;
-    gradCurrentSpread = Math.max(0, Math.min(gradTotalSpreads - 1, gradCurrentSpread + dir));
-    updateGradSpread();
-  }
-  // Kick off both PDF loads on page load
-  window.addEventListener('load', () => {
-    loadPortfolioPdf();
-    loadGradPdf();
-  });
-
-  // Re-render PDFs on resize so the canvas pixel-density always matches its displayed size.
-  let resizeTimer = null;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (portfolioPdf) {
-        coverRendered = false;
-        renderCover();
-        if (bookOpen) updateSpread();
-      }
-      if (gradPdf) {
-        gradCoverRendered = false;
-        renderGradCover();
-        if (gradBookOpen) updateGradSpread();
-      }
-    }, 150);
-  });
-
-  // ── Lightbox ──
-  function openLightbox(title, info, bgColor) {
-    document.getElementById('lightboxTitle').textContent = title;
-    document.getElementById('lightboxInfo').textContent = info;
-    document.getElementById('lightboxPlaceholder').textContent = title + ' — image placeholder';
-    document.getElementById('lightboxImg').style.background = bgColor || 'var(--cloth-mid)';
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function closeLightboxOutside(e) {
-    if (e.target === document.getElementById('lightbox')) closeLightbox();
-  }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-</script>
-</body>
-</html>
+    const jobs = [];
+    if (leftPage <= 
