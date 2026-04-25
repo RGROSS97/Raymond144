@@ -1112,7 +1112,7 @@
         <div class="profile-headshot">
           <img src="Assets/Headshot.jpg" alt="Raymond Gross headshot">
         </div>
-        <div class="profile-text">Architectural designer with experience across residential, commercial, and mixed-use projects. Strong foundation in construction documentation, consultant coordination, and technical problem solving. Approaches design through the lens of human experience, considering how spaces are inhabited from concept through documentation. Skilled in visualization, BIM workflows, and digital systems that improve project clarity and delivery.</div>
+        <div class="profile-text">Architectural designer with experience across residential, commercial, and mixed-use projects, with a strong foundation in construction documentation, consultant coordination, and technical problem solving. Approaches design through the lens of human experience, considering how spaces will be inhabited and used to inform decisions from concept through documentation. Skilled in visualization, BIM workflows, and digital tools that improve project clarity and delivery. Currently pursuing architectural licensure (ARE 5.0), with a target completion in 2026.</div>
       </div>
     </div>
 
@@ -1166,7 +1166,7 @@
             <div class="exp-role">Architectural Designer</div>
             <div class="exp-firm">Cooper Carry &nbsp;·&nbsp; Charlotte, NC</div>
           </div>
-          <div class="exp-date">May 2022 – Mar 2025</div>
+          <div class="exp-date">May 2022 – Apr 2025</div>
           <div class="exp-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="exp-panel">
@@ -1175,7 +1175,7 @@
             <div class="exp-bullets">
               <div class="exp-bullet">Produced Revit-based construction document sets for large-scale commercial projects — coordinating structural, MEP, and consultant teams</div>
               <div class="exp-bullet">Developed and maintained BIM models to support documentation accuracy and cross-discipline coordination throughout project phases</div>
-              <div class="exp-bullet">Developed and maintained design guideline packages to support consistency across large project deliverables</div>
+              <div class="exp-bullet">Developed design guidelines for retail and residential communities to establish rules and consistency in design language for future projects</div>
               <div class="exp-bullet">Reviewed shop drawings and submittals, verifying compliance with design intent and project requirements</div>
               <div class="exp-bullet">Coordinated across internal teams and external consultants to resolve design and documentation conflicts</div>
               <div class="exp-bullet">Conducted field observations and documentation, identifying discrepancies between design intent and built conditions</div>
@@ -1252,7 +1252,7 @@
           </div>
           <div class="exp-meta">
             <div class="exp-role">Graduate Intern</div>
-            <div class="exp-firm">Charleston Civic Design Center &nbsp;·&nbsp; Charleston, SC</div>
+            <div class="exp-firm">Charleston Design Center &nbsp;·&nbsp; Charleston, SC</div>
           </div>
           <div class="exp-date">2018</div>
           <div class="exp-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
@@ -1260,6 +1260,7 @@
         <div class="exp-panel">
           <div class="exp-panel-inner">
             <div class="exp-bullets">
+              <div class="exp-bullet">A division in the City of Charleston Department of Planning, Preservation and Sustainability, answered directly to the Mayor of Charleston</div>
               <div class="exp-bullet">Contributed to the People Pedal Plan — a municipal bicycle infrastructure initiative</div>
               <div class="exp-bullet">Assisted in research, planning, and presentation to city leadership</div>
             </div>
@@ -1363,6 +1364,10 @@
               <img src="Assets/stablediffusionLogo.png" alt="Stable Diffusion">
               Stable Diffusion
             </div>
+            <div class="skill-chip">
+              <img src="Assets/Adobe_Firefly_Logo.svg.png" alt="Adobe Firefly">
+              Adobe Firefly
+            </div>
           </div>
         </div>
 
@@ -1393,6 +1398,10 @@
               <img src="https://cdn.simpleicons.org/github/white" alt="GitHub" onerror="this.style.display='none'">
               GitHub
             </div>
+            <div class="skill-chip">
+              <img src="https://cdn.simpleicons.org/googlesearchconsole" alt="Google Search Console" onerror="this.style.display='none'">
+              Search Console
+            </div>
           </div>
         </div>
 
@@ -1410,10 +1419,6 @@
             <div class="skill-chip">
               <img src="Assets/indesignLogo.png" alt="InDesign">
               InDesign
-            </div>
-            <div class="skill-chip">
-              <img src="Assets/Adobe_Firefly_Logo.svg.png" alt="Adobe Firefly">
-              Adobe Firefly
             </div>
           </div>
         </div>
@@ -1574,110 +1579,335 @@
     <div class="filter-row">
       <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
       <button class="filter-btn" onclick="filterGallery('digital', this)">Digital &amp; AI</button>
+      <button class="filter-btn" onclick="filterGallery('render', this)">Renders</button>
       <button class="filter-btn" onclick="filterGallery('photography', this)">Photography</button>
       <button class="filter-btn" onclick="filterGallery('drawing', this)">Hand-drawn</button>
-      <button class="filter-btn" onclick="filterGallery('painting', this)">Painting</button>
+      <button class="filter-btn" onclick="filterGallery('collage', this)">Collage</button>
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
 
-      <div class="gallery-item" data-cat="digital">
-        <div class="gallery-img tall" style="background:#1e1c1a;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
+      <!-- ── Digital / AI ── -->
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Courtyard House', 'Midjourney · 2024', 'Personal Work/Ai Images/AI_Courtyard House.png')">
+        <div class="gallery-img tall"><img src="Personal Work/Ai Images/AI_Courtyard House.png" alt="Courtyard House" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
         <div class="gallery-item-tag">Digital / AI</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Untitled render study</div>
-          <div class="gallery-item-meta">Midjourney · 2024</div>
-        </div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Courtyard House</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
       </div>
 
-      <div class="gallery-item" data-cat="photography">
-        <div class="gallery-img med" style="background:#1a1c1e;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('New Zealand Mountain House', 'Midjourney · 2024', 'Personal Work/Ai Images/AI_New Zealand Mountian House.png')">
+        <div class="gallery-img med"><img src="Personal Work/Ai Images/AI_New Zealand Mountian House.png" alt="New Zealand Mountain House" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">New Zealand Mountain House</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Adaptive Reuse — Urban', 'Midjourney · 2024', 'Personal Work/Ai Images/Adaptive Reuse Urban.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Ai Images/Adaptive Reuse Urban.jpg" alt="Adaptive Reuse — Urban" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Adaptive Reuse — Urban</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Adaptive Reuse', 'Midjourney · 2024', 'Personal Work/Ai Images/Adaptive reuse.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Ai Images/Adaptive reuse.jpg" alt="Adaptive Reuse" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Adaptive Reuse</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Edge Study I', 'Midjourney · 2024', 'Personal Work/Ai Images/Edge 1.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Ai Images/Edge 1.jpg" alt="Edge Study I" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Edge Study I</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Edge Study II', 'Midjourney · 2024', 'Personal Work/Ai Images/Edge 2.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Ai Images/Edge 2.jpg" alt="Edge Study II" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Edge Study II</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Future Memories', 'Midjourney · 2024', 'Personal Work/Ai Images/Future Memories 1.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Ai Images/Future Memories 1.jpg" alt="Future Memories" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Future Memories</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Interior Kitchen', 'Midjourney · 2024', 'Personal Work/Ai Images/Interior Kitchen.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Ai Images/Interior Kitchen.jpg" alt="Interior Kitchen" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Interior Kitchen</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Mid-Century Dream II', 'Midjourney · 2024', 'Personal Work/Ai Images/MidCentury Dream 2.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Ai Images/MidCentury Dream 2.jpg" alt="Mid-Century Dream II" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Mid-Century Dream II</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Mid-Century Dream', 'Midjourney · 2024', 'Personal Work/Ai Images/MidCentury Dream.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Ai Images/MidCentury Dream.jpg" alt="Mid-Century Dream" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Mid-Century Dream</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Mid-Century Modern House', 'Midjourney · 2024', 'Personal Work/Ai Images/MidCentury Modern House.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Ai Images/MidCentury Modern House.jpg" alt="Mid-Century Modern House" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Mid-Century Modern House</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Modern Oasis', 'Midjourney · 2024', 'Personal Work/Ai Images/Modern Oasis.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Ai Images/Modern Oasis.jpg" alt="Modern Oasis" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Modern Oasis</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Mountain House', 'Midjourney · 2024', 'Personal Work/Ai Images/Mountain House.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Ai Images/Mountain House.jpg" alt="Mountain House" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Mountain House</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="digital" onclick="openLightbox('Urban Townhouses', 'Midjourney · 2024', 'Personal Work/Ai Images/Urban Townhouses.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Ai Images/Urban Townhouses.jpg" alt="Urban Townhouses" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Digital / AI</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Urban Townhouses</div><div class="gallery-item-meta">Midjourney · 2024</div></div>
+      </div>
+
+      <!-- ── Renders ── -->
+      <div class="gallery-item" data-cat="render" onclick="openLightbox('Corner Shot', 'Architectural Render', 'Personal Work/Renders/Corner Shot.PNG')">
+        <div class="gallery-img tall"><img src="Personal Work/Renders/Corner Shot.PNG" alt="Corner Shot" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Render</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Corner Shot</div><div class="gallery-item-meta">Architectural Render</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="render" onclick="openLightbox('Urban Oasis', 'Architectural Render', 'Personal Work/Renders/URBAN OASIS RENDER REDO 1.PNG')">
+        <div class="gallery-img med"><img src="Personal Work/Renders/URBAN OASIS RENDER REDO 1.PNG" alt="Urban Oasis" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Render</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Urban Oasis</div><div class="gallery-item-meta">Architectural Render</div></div>
+      </div>
+
+      <!-- ── Photography ── -->
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/055B7532-92DD-4DD3-97FC-7D4C03614FEB.PNG')">
+        <div class="gallery-img short"><img src="Personal Work/Photography/055B7532-92DD-4DD3-97FC-7D4C03614FEB.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
         <div class="gallery-item-tag">Photography</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Charlotte streetscape</div>
-          <div class="gallery-item-meta">Photography · 2024</div>
-        </div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
       </div>
 
-      <div class="gallery-item" data-cat="drawing">
-        <div class="gallery-img short" style="background:#1c1a18;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
-        <div class="gallery-item-tag">Hand-drawn</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Sneaker concept sketch</div>
-          <div class="gallery-item-meta">Pencil · 2024</div>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-cat="painting">
-        <div class="gallery-img med" style="background:#1a1a1c;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
-        <div class="gallery-item-tag">Painting</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Untitled study</div>
-          <div class="gallery-item-meta">Acrylic · 2023</div>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-cat="digital">
-        <div class="gallery-img short" style="background:#1e1a1c;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
-        <div class="gallery-item-tag">Digital / AI</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Spatial composition</div>
-          <div class="gallery-item-meta">Stable Diffusion · 2024</div>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-cat="photography">
-        <div class="gallery-img tall" style="background:#181c1a;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/16846B58-B6A4-4939-B9BD-C25E3203C8A1.PNG')">
+        <div class="gallery-img tall"><img src="Personal Work/Photography/16846B58-B6A4-4939-B9BD-C25E3203C8A1.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
         <div class="gallery-item-tag">Photography</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Architecture detail</div>
-          <div class="gallery-item-meta">Photography · 2023</div>
-        </div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
       </div>
 
-      <div class="gallery-item" data-cat="drawing">
-        <div class="gallery-img med" style="background:#1c1c1a;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/1938DD75-F1C8-4615-99C3-601B296BE50B.PNG')">
+        <div class="gallery-img med"><img src="Personal Work/Photography/1938DD75-F1C8-4615-99C3-601B296BE50B.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/3C100314-BBF5-4C53-B52D-8A83CE6406D3.PNG')">
+        <div class="gallery-img short"><img src="Personal Work/Photography/3C100314-BBF5-4C53-B52D-8A83CE6406D3.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/5312D450-C94C-4BE7-A793-128360A54377.PNG')">
+        <div class="gallery-img tall"><img src="Personal Work/Photography/5312D450-C94C-4BE7-A793-128360A54377.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/60729F97-D8B8-4A6A-956D-16047A24DDCD.PNG')">
+        <div class="gallery-img med"><img src="Personal Work/Photography/60729F97-D8B8-4A6A-956D-16047A24DDCD.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/640D9029-A2E8-4CD0-87EC-CCEE79E0C803.PNG')">
+        <div class="gallery-img short"><img src="Personal Work/Photography/640D9029-A2E8-4CD0-87EC-CCEE79E0C803.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/7EA95ADC-FDCA-4350-A821-25986D3725BC.PNG')">
+        <div class="gallery-img tall"><img src="Personal Work/Photography/7EA95ADC-FDCA-4350-A821-25986D3725BC.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/A718914D-6A0A-475F-B5AB-872DF80DDEB9.PNG')">
+        <div class="gallery-img med"><img src="Personal Work/Photography/A718914D-6A0A-475F-B5AB-872DF80DDEB9.PNG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/B7F16504-ACE8-4F18-87D2-C47641C21A0E.JPG')">
+        <div class="gallery-img short"><img src="Personal Work/Photography/B7F16504-ACE8-4F18-87D2-C47641C21A0E.JPG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/CBE2BAEF-0A5A-4C9B-9515-0DE03779C369.JPG')">
+        <div class="gallery-img tall"><img src="Personal Work/Photography/CBE2BAEF-0A5A-4C9B-9515-0DE03779C369.JPG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Enlight 68', 'Photography', 'Personal Work/Photography/Enlight68.JPG')">
+        <div class="gallery-img med"><img src="Personal Work/Photography/Enlight68.JPG" alt="Enlight 68" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Enlight 68</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Enlight 74', 'Photography', 'Personal Work/Photography/Enlight74.JPG')">
+        <div class="gallery-img short"><img src="Personal Work/Photography/Enlight74.JPG" alt="Enlight 74" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Enlight 74</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/IMG_3948.JPG')">
+        <div class="gallery-img tall"><img src="Personal Work/Photography/IMG_3948.JPG" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/IMG_7680.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Photography/IMG_7680.jpg" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="photography" onclick="openLightbox('Photography', 'Photography', 'Personal Work/Photography/IMG_2353.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Photography/IMG_2353.jpg" alt="Photography" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Photography</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Photography</div><div class="gallery-item-meta">Photography</div></div>
+      </div>
+
+      <!-- ── Drawings ── -->
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/3DAF7951-2485-41A7-831C-BEB125025F93.PNG')">
+        <div class="gallery-img short"><img src="Personal Work/Drawings/3DAF7951-2485-41A7-831C-BEB125025F93.PNG" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
         <div class="gallery-item-tag">Hand-drawn</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Facade study</div>
-          <div class="gallery-item-meta">Ink · 2023</div>
-        </div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
       </div>
 
-      <div class="gallery-item" data-cat="painting">
-        <div class="gallery-img short" style="background:#1c1a1e;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
-        <div class="gallery-item-tag">Painting</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Color field study</div>
-          <div class="gallery-item-meta">Watercolor · 2023</div>
-        </div>
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/57ABA509-3DB1-439C-A8D4-9BD7C23BDB66.PNG')">
+        <div class="gallery-img tall"><img src="Personal Work/Drawings/57ABA509-3DB1-439C-A8D4-9BD7C23BDB66.PNG" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
       </div>
 
-      <div class="gallery-item" data-cat="digital">
-        <div class="gallery-img med" style="background:#1a1e1c;">
-          <div class="gallery-img-label">Image placeholder</div>
-        </div>
-        <div class="gallery-item-tag">Digital / AI</div>
-        <div class="gallery-overlay">
-          <div class="gallery-item-title">Urban texture series</div>
-          <div class="gallery-item-meta">Adobe Firefly · 2024</div>
-        </div>
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_0242.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Drawings/IMG_0242.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_0512.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Drawings/IMG_0512.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_3245.JPG')">
+        <div class="gallery-img tall"><img src="Personal Work/Drawings/IMG_3245.JPG" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_5139.JPG')">
+        <div class="gallery-img med"><img src="Personal Work/Drawings/IMG_5139.JPG" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_5151.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Drawings/IMG_5151.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_8061.JPG')">
+        <div class="gallery-img tall"><img src="Personal Work/Drawings/IMG_8061.JPG" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Legends Never Die', 'Hand-drawn', 'Personal Work/Drawings/Legends Never Die Drawing.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Drawings/Legends Never Die Drawing.jpg" alt="Legends Never Die" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Legends Never Die</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/UXBAE9568.JPG')">
+        <div class="gallery-img short"><img src="Personal Work/Drawings/UXBAE9568.JPG" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/65837531037__01803C16-63F8-47DE-B127-A4E030921823.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Drawings/65837531037__01803C16-63F8-47DE-B127-A4E030921823.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_0095.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Drawings/IMG_0095.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_1704.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Drawings/IMG_1704.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_1944.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Drawings/IMG_1944.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_1947.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Drawings/IMG_1947.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_1949.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Drawings/IMG_1949.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_1954.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Drawings/IMG_1954.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_5766.jpg')">
+        <div class="gallery-img med"><img src="Personal Work/Drawings/IMG_5766.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_8135.jpg')">
+        <div class="gallery-img short"><img src="Personal Work/Drawings/IMG_8135.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="drawing" onclick="openLightbox('Drawing', 'Hand-drawn', 'Personal Work/Drawings/IMG_8185.jpg')">
+        <div class="gallery-img tall"><img src="Personal Work/Drawings/IMG_8185.jpg" alt="Drawing" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Hand-drawn</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Drawing</div><div class="gallery-item-meta">Hand-drawn</div></div>
+      </div>
+
+      <!-- ── Collage ── -->
+      <div class="gallery-item" data-cat="collage" onclick="openLightbox('Collage', 'Collage', 'Personal Work/Collage/DB8F9D91-BDF7-4634-A195-D30367844720-18444-0000032DC443FDA9.PNG')">
+        <div class="gallery-img tall"><img src="Personal Work/Collage/DB8F9D91-BDF7-4634-A195-D30367844720-18444-0000032DC443FDA9.PNG" alt="Collage" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        <div class="gallery-item-tag">Collage</div>
+        <div class="gallery-overlay"><div class="gallery-item-title">Collage</div><div class="gallery-item-meta">Collage</div></div>
       </div>
 
     </div>
@@ -2221,11 +2451,19 @@
   lastMobileMode = isMobileView();
 
   // ── Lightbox ──
-  function openLightbox(title, info, bgColor) {
+  function openLightbox(title, info, imgSrc) {
     document.getElementById('lightboxTitle').textContent = title;
     document.getElementById('lightboxInfo').textContent = info;
-    document.getElementById('lightboxPlaceholder').textContent = title + ' — image placeholder';
-    document.getElementById('lightboxImg').style.background = bgColor || 'var(--cloth-mid)';
+    const imgContainer = document.getElementById('lightboxImg');
+    if (imgSrc) {
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = title;
+      imgContainer.innerHTML = '';
+      imgContainer.appendChild(img);
+    } else {
+      imgContainer.innerHTML = '<div class="lightbox-img-placeholder">Image coming soon</div>';
+    }
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
